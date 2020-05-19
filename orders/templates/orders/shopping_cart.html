@@ -1,0 +1,35 @@
+{% extends "orders/layout.html" %}
+
+{% block body %}
+
+    <h1>Shopping Cart {{  cart|length }}</h1>
+    <a href="{% url 'index' %}">Menu</a> <br />
+    <a href="{% url 'clear_cart' %}">Clear Cart</a> <br />
+
+
+    {% for item in cart %}
+        <div>
+            <p>{{ item.dish }}</p>
+
+
+            {% for extra in item.extras.all %}
+                <p>{{ extra }}</p>
+            {% endfor %}
+
+
+            <p>{{ item.price }}</p>
+        </div><br />
+    {% endfor %}
+
+    <h2>{{ total }}</h2>
+
+    <p>Please confirm the items and total for your order</p>
+
+    <form action="{% url 'order' %}" method="POST">
+        {% csrf_token %}
+        <input hidden value="{{ total }}" name="total">
+        <input type="submit" value="Place Order">
+    </form>
+    
+   
+{% endblock %}

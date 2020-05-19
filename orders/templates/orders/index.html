@@ -1,0 +1,105 @@
+{% extends "orders/layout.html" %}
+
+{% block body %}
+
+
+    {% if message %}
+        <div style="color: red">{{ message }}</div>
+    {% endif %}
+
+    <h1>Welcome, {{ request.user.first_name }}</h1>
+    <a href="{% url 'logout' %}">Log out</a> <br />
+    <a href="{% url 'cart' %}">Shopping Cart: {{ cart_items }}</a> <br />
+
+    <h1>Menu</h1>
+
+
+    <h2>Regular Pizza</h2>
+    <form action="{% url 'add_item' %}" method="POST">
+        {% csrf_token %}
+        <select name="dish">
+            {% for item in menu %}
+                {% if item.product == "Regular Pizza" %}
+                    <option value="{{ item.id }}">{{ item.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <select name="extra" multiple>
+            {% for item in extra %}
+                {% if item.product == "Topping" %}
+                    <option value="{{ item.id }}">{{ item.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
+
+
+    <h2>Sicilian Pizza</h2>
+    <form action="{% url 'add_item' %}" method="POST">
+        {% csrf_token %}
+        <select name="dish">
+            {% for item in menu %}
+                {% if item.product == "Sicilian Pizza" %}
+                    <option value="{{ item.id }}">{{ item.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <select multiple name="extra">
+            {% for item in extra %}
+                {% if item.product == "Topping" %}
+                    <option value="{{ item.id }}">{{ item.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
+    <h2>Toppings</h2>
+    <h2>Subs</h2>
+    <form action="{% url 'add_item' %}" method="POST">
+        {% csrf_token %}
+        <select name="dish">
+            {% for item in menu %}
+                {% if item.product == "Sub" %}
+                    <option value="{{ item.id }}">{{ item.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <select multiple name="extra">
+            {% for item in extra %}
+                {% if item.product == "Add on" %}
+                    <option value="{{ item.id }}">{{ item.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
+
+    <h2>Add ons</h2>
+    <h2>Pasta</h2>
+    <form action="{% url 'add_item' %}" method="POST">
+        {% csrf_token %}
+        <select name="dish">
+            {% for item in menu %}
+                {% if item.product == "Pasta" %}
+                    <option value="{{ item.id }}">{{ item.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
+
+    <h2>Dinner Platters</h2>
+    <form action="{% url 'add_item' %}" method="POST">
+        {% csrf_token %}
+        <select name="dish">
+            {% for item in menu %}
+                {% if item.product == "Dinner Platters" %}
+                    <option value="{{ item.id }}">{{ item.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
+
+{% endblock %}
