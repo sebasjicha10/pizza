@@ -1,30 +1,29 @@
-{% extends "orders/layout.html" %}
+{% extends "orders/layout_landing.html" %}
+
+{% load static %}
+
+{% block title %}
+    Register - Pinocchio's
+{% endblock %}
 
 {% block body %}
+    <div id="register_container">
 
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
+        <img class="name" src="{% static 'orders/images/pinocchios.png' %}" alt="Pinocchios Name">
 
-    <form action="{% url 'register' %}" method="post">
-        {% csrf_token %}
+        <form id="register_form" action="{% url 'register' %}" method="post">
+            {% csrf_token %}
 
-        {% for field in form %}
-        <p>
-            {{ field.label_tag }}<br>
-            {{ field }}
-            {% if field.help_text %}
-              <small style="color: grey">{{ field.help_text }}</small>
-            {% endif %}
-            {% for error in field.errors %}
-              <p style="color: red">{{ error }}</p>
+            {% for field in form %}
+                {{ field }}
+                {% for error in field.errors %}
+                  <p style="color: red">{{ error }}</p>
+                {% endfor %}
             {% endfor %}
-        </p>
-        {% endfor %}
-        <input type="submit" value="Register">
+            <input class="button_big" type="submit" value="Register">
+        </form>
 
-    </form>
-
-    <a href="{% url 'login' %}">Log in</a>
+        <a class="login_register" href="{% url 'login' %}">Or Log In</a>
+    </div>
 
 {% endblock %}

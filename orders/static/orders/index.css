@@ -1,0 +1,85 @@
+/* Page Styling */
+/* Login Page */
+@import url("login.css");
+@import url("register.css");
+
+/* Variables */
+
+body {
+    background-color: white;
+    width: 100%;
+    --pinocchios_red: #BE0027;
+    --pinocchios_green: #239346;
+    border: 1px solid red;
+}
+
+/* Name */
+.name {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+/* Button Big */
+.button_big {
+    margin-top: 45px;
+    border: none;
+    color: white;
+    background-color: var(--pinocchios_red);
+    font-weight: bold;
+}
+#button_big:hover {
+    opacity: 0.7;
+}
+
+/* Invalid Credentials */
+#invalid_creds {
+    color: var(--pinocchios_red);
+}
+
+/* Logins-Register Links */
+.login_register {
+    color: var(--pinocchios_green);
+    margin-top: 20px;
+    text-decoration: underline;
+    margin-bottom: 10px;
+}
+.login_register:hover {
+    opacity: 0.7;
+}
+
+/* Header and Nav Bar */
+
+header {
+    width: 100%;
+    height: 100px;
+    border: 1px solid pink;
+    margin-top: 0;
+    margin-bottom: 100px;
+
+}
+
+#header_top {
+    height: 50%;
+    border: 1px solid red;
+
+}
+
+#logo {
+    width: 10px;
+}
+
+#name_header {
+    width: 50px;
+}
+
+#sandwich_menu {
+    width: 10px;
+}
+
+#header_bottom {
+    border: 1px solid purple;
+    height: 50%;
+}
+
+
+

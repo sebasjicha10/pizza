@@ -26,10 +26,15 @@ class Item(models.Model):
     extras = models.ManyToManyField(Extra, blank=True)
     price = models.FloatField()
 
+    def __str__(self):
+        return f"{self.dish} {self.extras.all()} {self.price}"
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     items = models.ManyToManyField(Item, blank=True)
+
+    def __str__(self):
+        return f"{self.id} {self.user}"
 
 class Order(models.Model):
     ORDER_STATUS = (
@@ -42,4 +47,7 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     total = models.FloatField()
     status = models.CharField(choices=ORDER_STATUS, max_length=3, default="PN")
+
+    def __str__(self):
+        return f"Status: {self.status}, ID: {self.id}, Time:{self.created.hour}:{self.created.minute}, User: {self.user}, Total: {self.total}"
 

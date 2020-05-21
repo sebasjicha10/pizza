@@ -1,7 +1,6 @@
-{% extends "orders/layout.html" %}
+{% extends "orders/layout_app.html" %}
 
 {% block body %}
-
 
     {% if message %}
         <div style="color: red">{{ message }}</div>
@@ -101,5 +100,7 @@
         </select>
         <input type="submit">
     </form>
+
+    </div>
 
 {% endblock %}

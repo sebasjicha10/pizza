@@ -1,0 +1,29 @@
+/* Mobile First */
+#login_container {
+  margin: 20px 20px 0px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#login_container #pinocchios_login {
+  width: 100%;
+  margin-bottom: 30px;
+}
+#login_container #login_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#login_container #login_form input {
+  width: 100%;
+  border-radius: 0px;
+  padding: 8px 6px;
+}
+#login_container #login_form .login_input {
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=login.css.map */

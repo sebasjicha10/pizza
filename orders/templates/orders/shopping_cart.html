@@ -1,4 +1,4 @@
-{% extends "orders/layout.html" %}
+{% extends "orders/layout_app.html" %}
 
 {% block body %}
 
@@ -17,11 +17,11 @@
             {% endfor %}
 
 
-            <p>{{ item.price }}</p>
+            <p>{{ item.price|stringformat:".2f" }}</p>
         </div><br />
     {% endfor %}
 
-    <h2>{{ total }}</h2>
+    <h2>{{ total|stringformat:".2f" }}</h2>
 
     <p>Please confirm the items and total for your order</p>
 
@@ -31,5 +31,4 @@
         <input type="submit" value="Place Order">
     </form>
     
-   
 {% endblock %}
