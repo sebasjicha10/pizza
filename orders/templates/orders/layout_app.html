@@ -15,33 +15,41 @@
         <script src="https://kit.fontawesome.com/0b431ba239.js" crossorigin="anonymous"></script>
 
         <link rel="stylesheet" href="{% static 'orders/index.css' %}"/>
+  
+        <!-- JavaScript -->
+        <script src="{% static 'orders/script/index.js' %}" type="module" charset="utf-8"></script>
+
     </head>
     <body>
         <div class="containter-fluid">
             <header>
-
                 <div id="header_top">
-
-                    <div id="home_logo">
-                        <img id="logo" src="{% static 'orders/images/logo.gif' %}" alt="Pinocchios">
-                        <img id="name_header" src="{% static 'orders/images/pinocchios.png' %}" alt="Pinocchios Name">
+                    <div>
+                        <a id="home_logo" href="{% url 'index' %}">
+                            <img id="logo" src="{% static 'orders/images/logo.gif' %}" alt="Pinocchios">
+                            <img id="name_header" src="{% static 'orders/images/pinocchios.png' %}" alt="Pinocchios Name">
+                        </a>
                     </div>
-
-                    <img id="sandwich_menu" src="{% static 'orders/images/menu.svg' %}" alt="Sandwich Menu">
-
+                    {% block heading_top_right_mobile %}{% endblock %}
+                    {% block heading_top_right_desktop %}{% endblock %}
                 </div>
-
                 <div id="header_bottom">
-                    <div></div>
-                    <div><h1>Our Menu</h1></div>
-                    <div></div>
+                    <div id="header_bottom_left">
+                        <div id="header_bottom_area">{% block heading_left %}{% endblock %}</div>
+                    </div>
+                    <div id="header_bottom_center">
+                        <h1 id="heading_app">{% block heading %}{% endblock %}</h1>
+                    </div>
+                    <div id="header_bottom_right">
+                        <div>
+                            <a id="shopping_cart_link" href="{% url 'cart' %}">
+                                <i class="fas fa-shopping-cart"></i>
+                                <p>{% block cart %}{% endblock %}</p>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-
-               
             </header>
-
-
-
             {% block body %}
             {% endblock %}
         </div>

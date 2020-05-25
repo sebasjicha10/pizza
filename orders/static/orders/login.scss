@@ -23,6 +23,26 @@
     }
 }
 
+/* Desktops and laptops */
+@media screen  and (min-width : 1200px) {
+    #login_container {
+        width: 50%;
+        margin: 0 auto;
+        padding-top: 50px;
+        #login_form {
+            .login_input {
+                width: 80%;
+            }
+            .button_big {
+                width: 60%;
+            }
+        }
+        .login_register {
+            margin-top: 50px;
+        }
+    }
+}
+
 
 
 

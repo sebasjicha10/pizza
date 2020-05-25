@@ -1,0 +1,107 @@
+/* Mobile First */
+/* Header Elements */
+#go_back {
+  color: var(--pinocchios_red);
+}
+#go_back #go_back_link {
+  color: var(--pinocchios_red);
+}
+#go_back #go_back_link:hover {
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+#cart_main {
+  margin: 15px 5px 0px 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+#cart_main #item_in_cart {
+  border-bottom: 1px solid var(--pinocchios_grey);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+#cart_main #item_in_cart #items_details {
+  text-align: left;
+}
+#cart_main #item_in_cart #items_details .main_dish_cart {
+  font-size: 18px;
+  font-weight: bold;
+}
+#cart_main #item_in_cart #items_details .main_dish_cart #individual_price {
+  font-weight: normal;
+}
+#cart_main #item_in_cart #total_price_item {
+  font-size: 24px;
+  margin-left: 10px;
+}
+#cart_main #total_price {
+  text-align: right;
+}
+#cart_main #total_price #order_confirmation {
+  font-size: 14px;
+  color: var(--pinocchios_red);
+}
+#cart_main #total_price #total_amount {
+  font-size: 30px;
+  font-weight: bolder;
+}
+#cart_main #total_price #total_amount #total_word {
+  color: var(--pinocchios_green);
+}
+#cart_main #place_order_form {
+  margin: 25px 0px;
+}
+#cart_main #place_order_button {
+  border: none;
+  color: white;
+  background-color: var(--pinocchios_red);
+  font-weight: bold;
+  border-radius: 0px;
+  padding: 5px 35px;
+}
+#cart_main .place_order_button:hover {
+  opacity: 0.7;
+}
+
+@media screen and (min-width: 1200px) {
+  #go_back, #header_botttom_left_text {
+    display: none;
+  }
+
+  #go_back_desktop {
+    color: var(--pinocchios_red);
+  }
+  #go_back_desktop #go_back_link_desktop {
+    color: var(--pinocchios_red);
+  }
+  #go_back_desktop #go_back_link_desktop:hover {
+    opacity: 0.7;
+    text-decoration: none;
+  }
+
+  #heading_top_right_desktop {
+    height: 100%;
+  }
+  #heading_top_right_desktop #cart_details_desktop {
+    display: flex;
+  }
+  #heading_top_right_desktop #cart_details_desktop #clear_cart_desktop {
+    color: var(--pinocchios_green);
+    text-decoration: none;
+    margin-left: 15px;
+  }
+  #heading_top_right_desktop #cart_details_desktop #clear_cart_desktop:hover {
+    opacity: 0.7;
+  }
+
+  #cart_main {
+    margin: 15px 10px 0px 10px;
+  }
+}
+
+/*# sourceMappingURL=cart.css.map */

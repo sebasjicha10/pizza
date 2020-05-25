@@ -1,24 +1,24 @@
 /* Mobile First */
-#login_container {
+#register_container {
   margin: 20px 20px 0px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
-#login_container #login_form {
+#register_container #register_form {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
-#login_container #login_form input {
+#register_container #register_form input {
   width: 100%;
   border-radius: 0px;
   padding: 8px 6px;
 }
-#login_container #login_form .login_input {
+#register_container #register_form .register_input {
   margin-top: 20px;
 }
 
@@ -28,6 +28,9 @@
     width: 50%;
     margin: 0 auto;
     padding-top: 50px;
+  }
+  #login_container #login_form {
+    border: 1px solid forestgreen;
   }
   #login_container #login_form .login_input {
     width: 80%;
@@ -40,4 +43,4 @@
   }
 }
 
-/*# sourceMappingURL=login.css.map */
+/*# sourceMappingURL=register.cs.map */

@@ -9,6 +9,8 @@ from django.contrib.auth.models import User
 
 from .models import Dish, Extra, Item, Cart, Order
 
+import smtplib
+
 
 # Registration Form
 class RegisterForm(UserCreationForm):
@@ -91,7 +93,11 @@ def add_item(request):
         return HttpResponseRedirect(reverse("index"))
     
     # Variable definition
-    dish = Dish.objects.get(pk=(request.POST["dish"]))
+    try:
+        dish = Dish.objects.get(pk=(request.POST["dish"]))
+    except:
+        return HttpResponseRedirect(reverse("index"))
+
     extra = request.POST.getlist('extra')
 
     # No toppings Pizza validator
@@ -172,6 +178,16 @@ def order(request):
 
     new_order.save()
     cart.delete()
+
+    # Email confirmation 
+    user_email = request.user.email
+    content = f"Dear Customer, your order({new_order.pk}) has been successfully processed.\nOrders details:\n    Number of items: {len(items)}\n    Total: {total}\n\n\nPinocchio's Pizza & Subs"
+    mail = smtplib.SMTP("smtp.gmail.com", 587)
+    mail.ehlo()
+    mail.starttls()
+    mail.login("pinocchios.pizzas.subs@gmail.com", "Gmailaccountforproject3")
+    mail.sendmail("pinocchios.pizzas.subs@gmail.com", user_email, content)
+    mail.close()
 
     return HttpResponseRedirect(reverse("index"))
 

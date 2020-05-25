@@ -1,0 +1,123 @@
+/* Mobile First */
+#menu_main {
+  margin: 15px 5px 0px 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+#menu_main #toppings_section, #menu_main #addons_section, #menu_main #menu_nav_desktop {
+  display: none;
+}
+#menu_main #regular_pizza_section #control_command_regular {
+  display: none;
+}
+#menu_main #sicilian_pizza_section #control_command_sicilian {
+  display: none;
+}
+#menu_main #subs_section #control_command_subs {
+  display: none;
+}
+#menu_main .dish_type {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+#menu_main .prices_table {
+  margin-bottom: 10px;
+}
+#menu_main .prices_table th {
+  font-weight: normal;
+  text-align: left;
+}
+#menu_main .prices_table tr {
+  border-bottom: 1px solid var(--pinocchios_grey);
+}
+#menu_main .prices_table td {
+  text-align: left;
+}
+#menu_main .select_dish {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 30px;
+}
+#menu_main .select_dish .main_dish_select {
+  width: 39%;
+  border-radius: 0px;
+}
+#menu_main .select_dish .extras_select {
+  width: 39%;
+  border-radius: 0px;
+  margin-left: 2px;
+  height: 100%;
+}
+#menu_main .select_dish .submit_item {
+  width: 19%;
+  border-radius: 0px;
+  background-color: var(--pinocchios_red);
+  color: white;
+  margin-left: 2px;
+  border: none;
+}
+#menu_main .select_dish .submit_item:hover {
+  opacity: 0.7;
+}
+#menu_main #footer_desktop {
+  display: none;
+}
+
+#menu_nav_desktop {
+  display: none;
+}
+
+@media screen and (min-width: 1200px) {
+  #menu_main {
+    padding: 10px 10px 0px 10px;
+    width: 70%;
+    margin: 0 auto;
+  }
+  #menu_main #toppings_section, #menu_main #addons_section {
+    display: initial;
+  }
+  #menu_main #toppings_section {
+    margin-bottom: 20px;
+  }
+  #menu_main #addons_section {
+    font-size: 12px;
+  }
+  #menu_main #footer_desktop {
+    display: initial;
+    margin: 20px 0px;
+    color: var(--pinocchios_green);
+  }
+  #menu_main #regular_pizza_section #control_command_regular {
+    display: initial;
+  }
+  #menu_main #sicilian_pizza_section #control_command_sicilian {
+    display: initial;
+  }
+  #menu_main #subs_section #control_command_subs {
+    display: initial;
+  }
+
+  #menu_nav_desktop {
+    display: initial;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    margin: 10px 10px 35px 10px;
+  }
+  #menu_nav_desktop .menu_link_desktop {
+    color: var(--pinocchios_green);
+    font-size: 14px;
+    text-decoration: none;
+  }
+  #menu_nav_desktop .menu_link_desktop:hover {
+    opacity: 0.7;
+  }
+}
+
+/*# sourceMappingURL=ourmenu.css.map */

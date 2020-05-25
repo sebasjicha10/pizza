@@ -7,13 +7,11 @@
 {% endblock %}
 
 {% block body %}
+
     <div id="register_container">
-
         <img class="name" src="{% static 'orders/images/pinocchios.png' %}" alt="Pinocchios Name">
-
         <form id="register_form" action="{% url 'register' %}" method="post">
             {% csrf_token %}
-
             {% for field in form %}
                 {{ field }}
                 {% for error in field.errors %}
@@ -22,8 +20,7 @@
             {% endfor %}
             <input class="button_big" type="submit" value="Register">
         </form>
-
-        <a class="login_register" href="{% url 'login' %}">Or Log In</a>
+        <a class="login_register" href="{% url 'login' %}">Or Log In</a> 
     </div>
 
 {% endblock %}

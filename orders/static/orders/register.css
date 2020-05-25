@@ -22,4 +22,22 @@
   margin-top: 20px;
 }
 
+/* Desktops and laptops */
+@media screen and (min-width: 1200px) {
+  #register_container {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 50px;
+  }
+  #register_container #register_form .register_input {
+    width: 80%;
+  }
+  #register_container #register_form .button_big {
+    width: 60%;
+  }
+  #register_container .login_register {
+    margin-top: 50px;
+  }
+}
+
 /*# sourceMappingURL=register.css.map */

@@ -1,34 +1,58 @@
 {% extends "orders/layout_app.html" %}
 
+<!-- Body Heading -->
+{% block heading %}Cart{% endblock %}
+<!-- Number of items -->
+{% block cart %}{{ cart|length }}{% endblock %}
+<!-- Header Top Right Mobile -->
+{% block heading_top_right_mobile %}
+    <div id="go_back">
+        <i class="fas fa-chevron-left"></i>
+        <a id="go_back_link" href="{% url 'index' %}">Back to menu</a>
+    </div>
+{% endblock %}
+<!-- Heading Bottom Left Mobile -->
+{% block heading_left %}<a id="header_botttom_left_text" href="{% url 'clear_cart' %}">Clear Cart</a>{% endblock %}
+
+<!-- Header Top Right Big Screens-->
+{% block heading_top_right_desktop %}
+    <div id="heading_top_right_desktop">
+        <div id="cart_details_desktop">
+            <a id="shopping_cart_link_desktop" href="{% url 'cart' %}">
+                <i style="padding: 0; margin: 0;" class="fas fa-shopping-cart"></i>
+                <p style="padding: 0; margin: 0;">{{ cart|length }}</p>
+            </a>
+            <a id="clear_cart_desktop" href="{% url 'clear_cart' %}">Clear Cart</a>
+        </div>
+        <div id="go_back_desktop">
+            <i class="fas fa-chevron-left"></i>
+            <a id="go_back_link_desktop" href="{% url 'index' %}">Back to menu</a>
+        </div>
+    </div>
+{% endblock %}
+
 {% block body %}
-
-    <h1>Shopping Cart {{  cart|length }}</h1>
-    <a href="{% url 'index' %}">Menu</a> <br />
-    <a href="{% url 'clear_cart' %}">Clear Cart</a> <br />
-
-
-    {% for item in cart %}
-        <div>
-            <p>{{ item.dish }}</p>
-
-
-            {% for extra in item.extras.all %}
-                <p>{{ extra }}</p>
-            {% endfor %}
-
-
-            <p>{{ item.price|stringformat:".2f" }}</p>
-        </div><br />
-    {% endfor %}
-
-    <h2>{{ total|stringformat:".2f" }}</h2>
-
-    <p>Please confirm the items and total for your order</p>
-
-    <form action="{% url 'order' %}" method="POST">
-        {% csrf_token %}
-        <input hidden value="{{ total }}" name="total">
-        <input type="submit" value="Place Order">
-    </form>
+    <main id="cart_main">
+        {% for item in cart %}
+            <div id="item_in_cart"> 
+                <div id="items_details">
+                    <h3 class="main_dish_cart">{{ item.dish.product }} {{ item.dish.name }}<span id="individual_price"> ${{ item.dish.price }}</span></h3>
+                    {% for extra in item.extras.all %}
+                        <p>{{ extra.product }}: {{ extra.name }} +${{ extra.price }}</p>
+                    {% endfor %}
+                </div>
+                <h2 id="total_price_item">${{ item.price|stringformat:".2f" }}</h2>
+            </div><br />
+        {% endfor %}
+        <div id="total_price">
+            <p id="order_confirmation">Please confirm the items and total before placing your order.</p>
+            <h2 id="total_amount"><span id="total_word">Total</span>   ${{ total|stringformat:".2f" }}</h2>
+        </div>
+        <form id="place_order_form" action="{% url 'order' %}" method="POST">
+            {% csrf_token %}
+            <input hidden value="{{ total }}" name="total">
+            <input id="place_order_button" type="submit" value="Place Order">
+        </form>
+    </main>
     
 {% endblock %}

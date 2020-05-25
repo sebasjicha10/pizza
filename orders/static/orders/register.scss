@@ -20,9 +20,29 @@
         .register_input {
             margin-top: 20px;
         }
-    
     }
 }
+
+/* Desktops and laptops */
+@media screen  and (min-width : 1200px) {
+   #register_container {
+        width: 50%;
+        margin: 0 auto;
+        padding-top: 50px;
+        #register_form {
+            .register_input{
+                width: 80%;
+            }
+            .button_big {
+                width: 60%;
+            }
+        }
+        .login_register {
+            margin-top: 50px;
+        }
+   }
+}
+
 
 
 

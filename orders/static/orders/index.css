@@ -2,6 +2,8 @@
 /* Login Page */
 @import url("login.css");
 @import url("register.css");
+@import url("ourmenu.css");
+@import url("cart.css");
 
 /* Variables */
 
@@ -10,7 +12,7 @@ body {
     width: 100%;
     --pinocchios_red: #BE0027;
     --pinocchios_green: #239346;
-    border: 1px solid red;
+    --pinocchios_grey : #BCB5B5;
 }
 
 /* Name */
@@ -27,7 +29,8 @@ body {
     background-color: var(--pinocchios_red);
     font-weight: bold;
 }
-#button_big:hover {
+
+.button_big:hover {
     opacity: 0.7;
 }
 
@@ -52,34 +55,230 @@ body {
 header {
     width: 100%;
     height: 100px;
-    border: 1px solid pink;
     margin-top: 0;
-    margin-bottom: 100px;
-
 }
 
+/* Header Top */
 #header_top {
     height: 50%;
-    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 5px;
+}
 
+#home_logo {
+    display: flex;
+    align-items: flex-end;
+}
+
+#home_logo:hover {
+    opacity: 0.7;
 }
 
 #logo {
-    width: 10px;
+    height: 48px;
+    width: auto;
 }
 
 #name_header {
-    width: 50px;
+    width: 200px;
+    margin: 0px 0px 6px 4px;
 }
 
 #sandwich_menu {
-    width: 10px;
+    font-size: 25px;
+    color: var(--pinocchios_red);
 }
+
+/* Mobile Nav Menu */
+
+#mobile_nav_menu {
+    border: 2px solid var(--pinocchios_red);
+    z-index: 2000;
+    position: fixed;
+    right: 0;
+    top: 50px;
+    background-color: white;
+    width: 60%;
+    text-align: right;
+    padding: 20px 10px;
+    display: none;
+}
+
+#mobile_nav_menu_user {
+    margin-bottom: 20px;
+}
+#mobile_nav_menu_dishes {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+#mobile_nav_menu_address {
+    text-align: center;
+}
+#user_name_mobile {
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--pinocchios_green);
+    margin: 0;
+}
+#log_out_mobile {
+    font-size: 12px;
+    color: var(--pinocchios_grey);
+}
+#log_out_mobile:hover {
+    opacity: 0.7;
+}
+.menu_link_mobile {
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.menu_link_mobile:hover {
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+.address_mobile {
+    color: var(--pinocchios_green);
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#heading_top_right_desktop {
+    display: none;
+}
+
+/* Header Bottom */
 
 #header_bottom {
-    border: 1px solid purple;
     height: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
+#header_bottom_left {
+    width: 33%;
+    background-color: var(--pinocchios_green);
+    text-align: center;
+}
 
+#header_botttom_left_text {
+    color: white;
+}
+
+#header_botttom_left_text:hover {
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+#header_bottom_area {
+    padding-top: 12px;
+}
+
+#header_bottom_center {
+    width: 33%;
+    text-align: center;
+}
+   
+#heading_app {
+    font-size: 18px;
+    font-weight: 300;
+    padding-top: 15px;
+}
+
+#header_bottom_right {
+    width: 33%;
+    background-color: var(--pinocchios_red);
+    text-align: center;
+}
+
+#shopping_cart_link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 15px;
+    color: white;
+    opacity: 0.8;
+}
+
+#shopping_cart_link:hover {
+    text-decoration: none;
+    opacity: 0.2;
+}
+
+/* Desktops and laptops */
+
+@media screen  and (min-width : 1200px) {
+    header {
+        width: 100%;
+        height: 60px;
+        margin-top: 0;
+    }
+    #header_top {
+        height: 50px;
+    }
+    #header_bottom {
+        height: 10px;
+    }
+    #sandwich_menu {
+        display: none;
+    }
+    #heading_top_right_desktop {
+        display: initial;
+        width: 32%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        text-align: right;
+    }
+    #shopping_cart_link {
+        display: none;
+    }
+    #shopping_cart_link_desktop {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        color: var(--pinocchios_red);
+    }
+    #shopping_cart_link_desktop:hover {
+        text-decoration: none;
+        opacity: 0.2;
+    }
+
+    #full_user_name_desktop {
+ 
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--pinocchios_green);
+        position: relative;
+        top: 10px;  
+    }
+
+    #logout_desktop {
+        font-size: 12px;
+        color: var(--pinocchios_grey);
+    }
+    #header_bottom {
+        height: 5%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    #heading_app {
+        font-size: 18px;
+        font-weight: 300;
+        padding-top: 0px;
+        position: relative;
+        bottom: 5px;
+    }
+ }
 

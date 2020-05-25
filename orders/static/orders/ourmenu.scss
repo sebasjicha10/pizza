@@ -1,0 +1,134 @@
+/* Mobile First */
+
+#menu_main {
+    margin: 15px 5px 0px 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    #toppings_section, #addons_section, #menu_nav_desktop {
+        display: none;
+    }
+    #regular_pizza_section {
+        #control_command_regular {
+            display: none;
+        }
+    }
+    #sicilian_pizza_section {
+        #control_command_sicilian {
+            display: none;
+        }
+    }
+    #subs_section {
+        #control_command_subs {
+            display: none;
+        }
+    }
+    .dish_type {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    .prices_table {
+        margin-bottom: 10px;
+        th {
+            font-weight: normal;
+            text-align: left;
+        }
+        tr {
+            border-bottom: 1px solid var(--pinocchios_grey);
+        }
+        td {
+            text-align: left;
+        }
+    }
+    .select_dish {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 30px;
+        .main_dish_select {
+            width: 39%;
+            border-radius: 0px;
+        }
+        .extras_select {
+            width: 39%;
+            border-radius: 0px;
+            margin-left: 2px;
+            height: 100%;
+
+        }
+        .submit_item {
+            width: 19%;
+            border-radius: 0px;
+            background-color: var(--pinocchios_red);
+            color: white;
+            margin-left: 2px;
+            border: none;
+        }
+        .submit_item:hover {
+            opacity: 0.7;
+        }
+    }
+    #footer_desktop {
+        display: none;
+    }
+}
+#menu_nav_desktop {
+    display: none;
+}
+@media screen  and (min-width : 1200px) {
+    #menu_main {
+        padding: 10px 10px 0px 10px;
+        width: 70%;
+        margin: 0 auto;
+
+        #toppings_section, #addons_section {
+            display: initial;
+        }
+        #toppings_section {
+            margin-bottom: 20px;
+        }
+        #addons_section {
+            font-size: 12px;
+        }
+        #footer_desktop {
+            display: initial;
+            margin: 20px 0px;
+            color: var(--pinocchios_green);
+        }
+        #regular_pizza_section {
+            #control_command_regular {
+                display: initial;
+            }
+        }
+        #sicilian_pizza_section {
+            #control_command_sicilian {
+                display: initial;
+            }
+        }
+        #subs_section {
+            #control_command_subs {
+                display: initial;
+            }
+        }
+    }
+    #menu_nav_desktop {
+        display: initial;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        margin: 10px 10px 35px 10px;
+        .menu_link_desktop {
+            color: var(--pinocchios_green);
+            font-size: 14px;
+            text-decoration: none;
+        }
+        .menu_link_desktop:hover {
+            opacity: 0.7;
+        }
+    }
+}
+

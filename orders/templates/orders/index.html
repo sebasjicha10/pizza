@@ -1,106 +1,413 @@
 {% extends "orders/layout_app.html" %}
+{% load static %}
+
+<!-- Body Heading -->
+{% block heading %}Our Menu{% endblock %}
+<!-- Number of items -->
+{% block cart %}{{ cart_items }}{% endblock %}
+<!-- Header Top Right Mobile-->
+{% block heading_top_right_mobile %}
+    <i id="sandwich_menu" class="fas fa-bars"></i>
+    <div id="mobile_nav_menu">
+        <div id="mobile_nav_menu_user">
+            <p id="user_name_mobile">{{ request.user.first_name }} {{ request.user.last_name }}</p> 
+            <a id="log_out_mobile" href="{% url 'logout' %}">Log out</a>
+        </div>
+        <div id="mobile_nav_menu_dishes">
+            <a class="menu_link_mobile" href="#regular_pizza_section">Regular Pizza</a>
+            <a class="menu_link_mobile" href="#regular_sicilian_section">Sicilian  Pizza</a>
+            <a class="menu_link_mobile" href="#subs_section">Subs</a>
+            <a class="menu_link_mobile" href="#pasta_section">Pasta</a>
+            <a class="menu_link_mobile" href="#salads_section">Salads</a>
+            <a class="menu_link_mobile" href="#dinner_platters_section">Dinner Platters</a>
+        </div>
+        <div id="mobile_nav_menu_address">
+            <p class="address_mobile">Pinocchio's Pizza & Subs</p>
+            <p class="address_mobile">74 Winthrop Street</p>
+            <p class="address_mobile">Harvard Square</p>
+            <p class="address_mobile">617-876-4897</p>
+        </div>
+    </div>
+{% endblock %}
+<!-- Header Top Right Big Screens-->
+{% block heading_top_right_desktop %}
+    <div id="heading_top_right_desktop">
+        <div>
+            <a id="shopping_cart_link_desktop" href="{% url 'cart' %}">
+                <i style="padding: 0; margin: 0;" class="fas fa-shopping-cart"></i>
+                <p style="padding: 0; margin: 0;">{{ cart_items }}</p>
+            </a>
+        </div>
+        <div>
+            <p id="full_user_name_desktop">{{ request.user.first_name }} {{ request.user.last_name }}</p>  
+            <a id="logout_desktop" href="{% url 'logout' %}">Log out</a>
+        </div>
+    </div>
+{% endblock %}
 
 {% block body %}
 
-    {% if message %}
-        <div style="color: red">{{ message }}</div>
-    {% endif %}
-
-    <h1>Welcome, {{ request.user.first_name }}</h1>
-    <a href="{% url 'logout' %}">Log out</a> <br />
-    <a href="{% url 'cart' %}">Shopping Cart: {{ cart_items }}</a> <br />
-
-    <h1>Menu</h1>
-
-
-    <h2>Regular Pizza</h2>
-    <form action="{% url 'add_item' %}" method="POST">
-        {% csrf_token %}
-        <select name="dish">
-            {% for item in menu %}
-                {% if item.product == "Regular Pizza" %}
-                    <option value="{{ item.id }}">{{ item.name }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-        <select name="extra" multiple>
-            {% for item in extra %}
-                {% if item.product == "Topping" %}
-                    <option value="{{ item.id }}">{{ item.name }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-        <input type="submit">
-    </form>
-
-
-    <h2>Sicilian Pizza</h2>
-    <form action="{% url 'add_item' %}" method="POST">
-        {% csrf_token %}
-        <select name="dish">
-            {% for item in menu %}
-                {% if item.product == "Sicilian Pizza" %}
-                    <option value="{{ item.id }}">{{ item.name }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-        <select multiple name="extra">
-            {% for item in extra %}
-                {% if item.product == "Topping" %}
-                    <option value="{{ item.id }}">{{ item.name }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-        <input type="submit">
-    </form>
-    <h2>Toppings</h2>
-    <h2>Subs</h2>
-    <form action="{% url 'add_item' %}" method="POST">
-        {% csrf_token %}
-        <select name="dish">
-            {% for item in menu %}
-                {% if item.product == "Sub" %}
-                    <option value="{{ item.id }}">{{ item.name }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-        <select multiple name="extra">
-            {% for item in extra %}
-                {% if item.product == "Add on" %}
-                    <option value="{{ item.id }}">{{ item.name }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-        <input type="submit">
-    </form>
-
-    <h2>Add ons</h2>
-    <h2>Pasta</h2>
-    <form action="{% url 'add_item' %}" method="POST">
-        {% csrf_token %}
-        <select name="dish">
-            {% for item in menu %}
-                {% if item.product == "Pasta" %}
-                    <option value="{{ item.id }}">{{ item.name }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-        <input type="submit">
-    </form>
-
-    <h2>Dinner Platters</h2>
-    <form action="{% url 'add_item' %}" method="POST">
-        {% csrf_token %}
-        <select name="dish">
-            {% for item in menu %}
-                {% if item.product == "Dinner Platters" %}
-                    <option value="{{ item.id }}">{{ item.name }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-        <input type="submit">
-    </form>
-
+    <div id="menu_nav_desktop">
+        <a class="menu_link_desktop" href="#regular_pizza_section">Regular Pizza</a>
+        <a class="menu_link_desktop" href="#regular_sicilian_section">Sicilian  Pizza</a>
+        <a class="menu_link_desktop" href="#subs_section">Subs</a>
+        <a class="menu_link_desktop" href="#pasta_section">Pasta</a>
+        <a class="menu_link_desktop" href="#salads_section">Salads</a>
+        <a class="menu_link_desktop" href="#dinner_platters_section">Dinner Platters</a>
     </div>
+    <main id="menu_main">
+        <section id="toppings_section">
+            <h2 class="dish_type">Pizza Toppings</h2>
+            <p style="font-size: 12px;">Pepperoni, Sausage, Mushrooms, Onions, Ham, Canadian Bacon, Pineapple, Eggplant, Tomato & Basil, Green Peppers, Hamburger, Spinach, Artichoke, Buffalo Chicken, Barbecue Chicken, Anchovies, Black Olives, Fresh Garlic, Zucchini</p>
+        </section>
+        <section id="regular_pizza_section">
+            <h2 class="dish_type">Regular Pizza</h2>
+            <div class="prices_table" style="overflow-x:auto;">
+                <table style="width:100%">
+                    <tr>
+                        <th></th>
+                        <th>Small</th>
+                        <th>Large</th>
+                    </tr>
+                    <tr>
+                        <td>Chesse</td>
+                        <td>12.70</td>
+                        <td>17.95</td>
+                    </tr>
+                    <tr>
+                        <td>1 topping</td>
+                        <td>13.70</td>
+                        <td>19.75</td>
+                    </tr>
+                    <tr>
+                        <td>2 toppings</td>
+                        <td>15.20</td>
+                        <td>21.95</td>
+                    </tr>
+                    <tr>
+                        <td>3 toppings</td>
+                        <td>16.20</td>
+                        <td>23.95</td>
+                    </tr>
+                    <tr>
+                        <td>Special</td>
+                        <td>17.75</td>
+                        <td>25.95</td>
+                    </tr>
+                </table>
+            </div>
+            <p id="control_command_regular"></p>
+            <form id="regular_pizza_form" class="select_dish" action="{% url 'add_item' %}" method="POST">
+                {% csrf_token %}
+                <select id="main_dish_regular" class="main_dish_select" name="dish">
+                    <option value="" disabled selected>Regular Pizza</option>
+                    {% for item in menu %}
+                        {% if item.product == "Regular Pizza" %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <select id="extras_regular" size="1" class="extras_select" name="extra" multiple>
+                    {% for item in extra %}
+                        {% if item.product == "Topping" %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <input class="submit_item" type="submit" value="Add">
+            </form>
+        </section>
+        <section id="regular_sicilian_section"> 
+            <h2 class="dish_type">Sicilian Pizza</h2>
+            <div class="prices_table" style="overflow-x:auto;">
+                <table style="width:100%">
+                    <tr>
+                        <th></th>
+                        <th>Small</th>
+                        <th>Large</th>
+                      </tr>
+                      <tr>
+                        <td>Chesse</td>
+                        <td>24.45</td>
+                        <td>38.70</td>
+                      </tr>
+                      <tr>
+                        <td>1 topping</td>
+                        <td>26.45</td>
+                        <td>40.70</td>
+                      </tr>
+                      <tr>
+                        <td>2 toppings</td>
+                        <td>28.45</td>
+                        <td>42.70</td>
+                      </tr>
+                      <tr>
+                        <td>3 toppings</td>
+                        <td>29.45</td>
+                        <td>44.70</td>
+                      </tr>
+                      <tr>
+                        <td>Special</td>
+                        <td>30.45</td>
+                        <td>45.70</td>
+                      </tr>
+                </table>
+            </div>
+            <p id="control_command_sicilian"></p>
+            <form id="sicilian_pizza_form" class="select_dish" action="{% url 'add_item' %}" method="POST">
+                {% csrf_token %}
+                <select id="main_dish_sicilian" class="main_dish_select" name="dish">
+                    <option value="" disabled selected>Sicilian Pizza</option>
+                    {% for item in menu %}
+                        {% if item.product == "Sicilian Pizza" %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <select id="extras_sicilian" size="1" class="extras_select" multiple name="extra">
+                    {% for item in extra %}
+                        {% if item.product == "Topping" %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <input class="submit_item" type="submit" value="Add">
+            </form>
+        </section>
+        <section id="subs_section">
+            <h2 class="dish_type">Subs</h2>
+            <p id="addons_section">Add ons: Mushrooms +0.5, Green Peppers  +0.5, Onions +0.5, Extra Cheese on any sub +0.5</p>
+            <div class="prices_table" style="overflow-x:auto;">
+                <table style="width:100%">
+                    <tr>
+                        <th></th>
+                        <th>Small</th>
+                        <th>Large</th>
+                    </tr>
+                    <tr>
+                        <td>Chesse</td>
+                        <td>6.50</td>
+                        <td>7.95</td>
+                    </tr>
+                    <tr>
+                        <td>Italian</td>
+                        <td>6.50</td>
+                        <td>7.95</td>
+                    </tr>
+                    <tr>
+                        <td>Ham + Cheese</td>
+                        <td>6.50</td>
+                        <td>7.95</td>
+                    </tr>
+                    <tr>
+                        <td>Meatball</td>
+                        <td>6.50</td>
+                        <td>7.95</td>
+                    </tr>
+                    <tr>
+                        <td>Tuna</td>
+                        <td>6.50</td>
+                        <td>7.95</td>
+                    </tr>
+                    <tr>
+                        <td>Turkey</td>
+                        <td>7.50</td>
+                        <td>8.50</td>
+                    </tr>
+                    <tr>
+                        <td>Chicken Parmigiana</td>
+                        <td>7.50</td>
+                        <td>8.50</td>
+                    </tr>
+                    <tr>
+                        <td>Eggplant Parmigiana</td>
+                        <td>6.50</td>
+                        <td>7.95</td>
+                    </tr>
+                    <tr>
+                        <td>Steak</td>
+                        <td>6.50</td>
+                        <td>7.95</td>
+                    </tr>
+                    <tr>
+                        <td>Steak + Cheese</td>
+                        <td>6.95</td>
+                        <td>8.50</td>
+                    </tr>
+                    <tr>
+                        <td>Sausage, Peppers & Onions	</td>
+                        <td></td>
+                        <td>8.50</td>
+                    </tr>
+                    <tr>
+                        <td>Hamburger</td>
+                        <td>4.60</td>
+                        <td>6.95</td>
+                    </tr>
+                    <tr>
+                        <td>Cheeseburger</td>
+                        <td>5.10</td>
+                        <td>7.45</td>
+                    </tr>
+                    <tr>
+                        <td>Fried Chicken</td>
+                        <td>6.95</td>
+                        <td>8.50</td>
+                    </tr>
+                    <tr>
+                        <td>Veggie</td>
+                        <td>6.95</td>
+                        <td>8.50</td>
+                    </tr>
+                </table>
+            </div>
+            <p id="control_command_subs"></p>
+            <form class="select_dish" action="{% url 'add_item' %}" method="POST">
+                {% csrf_token %}
+                <select class="main_dish_select" name="dish">
+                    <option value="" disabled>Sub</option>
+                    {% for item in menu %}
+                        {% if item.product == "Sub" %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <select id="extras_sub" size="1" class="extras_select" multiple name="extra">
+                    {% for item in extra %}
+                        {% if item.product == "Add on" %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <input class="submit_item" type="submit" value="Add">
+            </form>
+        </section>
+        <section id="pasta_section">
+            <h2 class="dish_type">Pasta</h2>
+            <div class="prices_table" style="overflow-x:auto;">
+                <table style="width:100%">
+                    <tr>
+                        <td>Baked Ziti w/Mozzarella</td>
+                        <td>6.50</td>
+                    </tr>
+                    <tr>
+                        <td>Baked Ziti w/Meatballs</td>
+                        <td>8.75</td>
+                    </tr>
+                    <tr>
+                        <td>Baked Ziti w/Chicken</td>
+                        <td>9.75</td>
+                    </tr>
+                </table>
+            </div>
+            <form class="select_dish" action="{% url 'add_item' %}" method="POST">
+                {% csrf_token %}
+                <select name="dish">
+                    <option value="" disabled selected>Pasta</option>
+                    {% for item in menu %}
+                        {% if item.product == "Pasta" %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <input class="submit_item" type="submit" value="Add">
+            </form>
+        </section>
+        <section id="salads_section">
+            <h2 class="dish_type">Salads</h2>
+            <div class="prices_table" style="overflow-x:auto;">
+                <table style="width:100%">
+                    <tr>
+                        <td>Garden Salad</td>
+                        <td>6.25</td>
+                    </tr>
+                    <tr>
+                        <td>Greek Salad</td>
+                        <td>8.25</td>
+                    </tr>
+                    <tr>
+                        <td>Antipasto</td>
+                        <td>8.25</td>
+                    </tr>
+                    <tr>
+                        <td>Salad w/Tuna</td>
+                        <td>8.25</td>
+                    </tr>
+                </table>
+            </div>
+            <form class="select_dish" action="{% url 'add_item' %}" method="POST">
+                {% csrf_token %}
+                <select name="dish">
+                    <option value="" disabled selected>Salad</option>
+                    {% for item in menu %}
+                        {% if item.product == "Salads" %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <input class="submit_item" type="submit" value="Add">
+            </form>
+        </section>
+        <section id="dinner_platters_section">
+            <h2 class="dish_type">Dinner Platters</h2>
+            <div class="prices_table" style="overflow-x:auto;">
+                <table style="width:100%">
+                    <tr>
+                        <th></th>
+                        <th>Small</th>
+                        <th>Large</th>
+                    </tr>
+                    <tr>
+                        <td>Garden Salad</td>
+                        <td>40.00</td>
+                        <td>65.00</td>
+                    </tr>
+                    <tr>
+                        <td>Greek  Salad</td>
+                        <td>50.00</td>
+                        <td>75.00</td>
+                    </tr>
+                    <tr>
+                        <td>Antipasto</td>
+                        <td>50.00</td>
+                        <td>75.00</td>
+                    </tr>                    
+                    <tr>
+                        <td>Baked Ziti</td>
+                        <td>40.00</td>
+                        <td>65.00</td>
+                    </tr>                    
+                    <tr>
+                        <td>Meatball Parm</td>
+                        <td>50.00</td>
+                        <td>75.00</td>
+                    </tr>                    
+                    <tr>
+                        <td>Chicken Parm</td>
+                        <td>55.00</td>
+                        <td>85.00</td>
+                    </tr>
+                </table>
+            </div>
+            <form class="select_dish" action="{% url 'add_item' %}" method="POST">
+                {% csrf_token %}
+                <select name="dish">
+                    <option value="" disabled selected>Dinner Platter</option>
+                    {% for item in menu %}
+                        {% if item.product == "Dinner Platters" %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <input class="submit_item" type="submit" value="Add">
+            </form>
+        </section>
+        <div id="footer_desktop">
+            <h3>Pinocchio's Pizza & Subs</h3>
+            <h4>74 Winthrop Street</h4>
+            <h4>Harvard Square</h4>
+            <h4>617-876-4897</h4>
+        </div>
+    </main>
 
 {% endblock %}
