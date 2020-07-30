@@ -8,7 +8,7 @@ Website that handles a restaurant’s online orders. Users have access to the re
   <li>Python - Django</li>
   <li>Sqlite3</li>
 </ul>
-<h2>Front End</h2> (Built for Mobile first)
+<h2>Front End (Built for Mobile first)</h2> 
 <ul>
   <li>HTML</li>
   <li>CSS - BootStrap - Flex Box</li>
