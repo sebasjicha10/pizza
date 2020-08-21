@@ -1,7 +1,7 @@
 <h1>Pinocchio's Pizza & Subs</h1>
 <h2>Description</h2>
 
-Website that handles a restaurant’s online orders. Users have access to the restaurant’s menu, can add items to their shopping cart, and submit orders. Restaurant owners are be able to add and update menu items, and view orders that have been placed. <a href="https://youtu.be/YbKi5s2aHKk" target="_blank">Watch a video demo here</a>.<i style="font-size: 12px;"> (Clicking on the link will redirect you to YouTube).</i>
+Web app that handles a restaurant’s online orders. Users have access to the restaurant’s menu, can add items to their shopping cart, and submit orders. Restaurant owners are be able to add and update menu items, and view orders that have been placed. <a href="https://youtu.be/YbKi5s2aHKk" target="_blank">Watch a video demo here</a>.<i style="font-size: 12px;"> (Clicking on the link will redirect you to YouTube).</i>
 
 <h2>Back End</h2>
 <ul>
